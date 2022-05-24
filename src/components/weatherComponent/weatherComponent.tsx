@@ -1,4 +1,11 @@
-{
+import React from "react";
+import PropType from "prop-types";
+
+WeatherComponent.propTypes = {
+    pincodeData: PropType.string
+}
+function WeatherComponent({pincodeData}: {pincodeData:string}){
+ let weatherData:any = {
     "560068": [
         {
             "Place": "Begur",
@@ -51,10 +58,24 @@
             "Date": "21/05/2022"
         }
     ]
+};
+
+
+    return (
+    <div>
+        weather Card {pincodeData}
+        {pincodeData && weatherData.pincodeData && weatherData[pincodeData].map((data:any)=> 
+            (<div key={data.Date}><div> {data.Temperatue} </div>
+            <div> {data.Place} </div>
+            <div> {data.TemperatureDegree} </div>
+            <div> {data.Date} </div></div>)
+        )}
+    </div>
+    );
+
 }
 
 
 
 
-
-
+export default WeatherComponent;

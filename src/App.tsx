@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import WeatherComponent from './components/weatherComponent/weatherComponent';
 
 function App() {
+  let [pincode, updatePincode] =useState('');
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <h1>Weather Service</h1>
       </header>
+      <div className="container">
+        <div>
+          <input type="text" onChange={(event)=> {updatePincode(event.target.value)}}/>
+        </div>
+        <WeatherComponent pincodeData={pincode}></WeatherComponent>
+      </div>
+      <footer className="App-footer">
+        Copy Right 2022
+      </footer>
     </div>
   );
 }
